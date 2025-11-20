@@ -3,44 +3,264 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>欢迎来到我的主页</title>
+  <title>何不为 | 博士研究生</title>
+  <meta name="description" content="何不为，南卡罗莱纳大学博士生，研究方向：非参数统计推论、生存分析">
   <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --light: #ecf0f1;
+      --gray: #7f8c8d;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f8f9fa;
-      color: #212529;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+    }
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+    /* 语言切换按钮 */
+    .lang-toggle {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .lang-toggle:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
       display: flex;
       justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    nav li {
       margin: 0;
     }
-    .card {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: center;
-      max-width: 600px;
+    nav a {
+      display: block;
+      padding: 1rem 1.2rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
     }
-    h1 {
-      color: #0d6efd;
+    nav a:hover {
+      color: var(--accent);
+    }
+    section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--light);
+    }
+    .pub-item, .project-item {
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--accent);
+      padding: 0.8rem 1rem;
+    }
+    .pub-title {
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+    .pub-authors, .pub-journal {
+      font-size: 0.95rem;
+      color: var(--gray);
     }
     a {
-      color: #0d6efd;
+      color: var(--accent);
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray);
+      border-top: 1px solid #eee;
+      margin-top: 2rem;
+    }
+    @media (max-width: 600px) {
+      .lang-toggle {
+        top: 0.8rem;
+        right: 1rem;
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+      }
+      nav ul {
+        flex-direction: column;
+      }
+      header {
+        padding: 2rem 1rem;
+      }
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>你好，世界！🌍</h1>
-    <p>这是我的第一个 GitHub Pages 网站。</p>
-    <p>由 <strong>GitHub Pages</strong> 免费托管。</p>
-    <p>访问我的 GitHub：<a href="https://github.com/Buwei1997" target="_blank">@Buwei1997</a></p>
+
+<header>
+  <button class="lang-toggle" id="langToggle">中文 / English</button>
+  <h1 id="nameZh">何不为 (Buwei He)</h1>
+  <h1 id="nameEn" style="display:none;">Buwei He</h1>
+  <p id="affilZh">博士研究生 | 南卡罗莱纳大学 · 阿诺德公共卫生学院</p>
+  <p id="affilEn" style="display:none;">PhD Candidate | Arnold School of Public Health, University of South Carolina</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about" data-zh="关于我" data-en="About">关于我</a></li>
+    <li><a href="#publications" data-zh="出版物" data-en="Publications">出版物</a></li>
+    <li><a href="#contact" data-zh="联系我" data-en="Contact">联系我</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="about">
+  <h2 id="aboutTitleZh">关于我</h2>
+  <h2 id="aboutTitleEn" style="display:none;">About Me</h2>
+  <p id="aboutTextZh">
+    我是何不为，目前在<strong>南卡罗莱纳大学</strong>攻读<strong>生物统计学专业</strong>博士学位，导师是Jiajia Zhang教授。
+    我的研究兴趣包括：<strong>非参数统计推论、混合治愈模型、高维数据分析、因果推断、机器学习</strong>等。
+    此前，我在<strong>罗格斯大学</strong>获得硕士学位，在<strong>北京林业大学</strong>获得学士学位。
+  </p>
+  <p id="aboutTextEn" style="display:none;">
+    I am Buwei He, a PhD candidate in <strong>Biostatistics</strong> at <strong>University of South Carolina</strong>, advised by Prof. Jiajia Zhang.
+    My research interests include: <strong>Non-parametric statistical inference, mixture cure model, high-dimensional data analysis, causal inference, and machine learning</strong>.
+    I received my M.S. from <strong>Rutgers University</strong> and B.S. from <strong>Beijing Forestry University</strong>.
+  </p>
+</section>
+
+<section id="publications">
+  <h2 id="pubsTitleZh">出版物</h2>
+  <h2 id="pubsTitleEn" style="display:none;">Publications</h2>
+  
+  <div class="pub-item">
+    <div class="pub-title" id="pub1TitleZh">Wu, B., & Zhang, L. (2025). 高维回归中的后选择推断.</div>
+    <div class="pub-title" id="pub1TitleEn" style="display:none;">Wu, B., & Zhang, L. (2025). Post-selection inference in high-dimensional regression.</div>
+    <div class="pub-journal" id="pub1JournalZh"><em>统计科学杂志</em>, 40(2), 123–145. <a href="#">DOI</a> | <a href="#">PDF</a></div>
+    <div class="pub-journal" id="pub1JournalEn" style="display:none;"><em>Journal of Statistical Science</em>, 40(2), 123–145. <a href="#">DOI</a> | <a href="#">PDF</a></div>
   </div>
+</section>
+
+<section id="contact">
+  <h2 id="contactTitleZh">联系我</h2>
+  <h2 id="contactTitleEn" style="display:none;">Contact</h2>
+  <p id="contactEmailZh">📧 邮箱：<a href="mailto:buwei@email.sc.edu">buwei@email.sc.edu</a></p>
+  <p id="contactEmailEn" style="display:none;">📧 Email: <a href="mailto:buwei@email.sc.edu">buwei@email.sc.edu</a></p>
+  
+  <p id="contactAddrZh">📍 地址：南卡罗莱纳大学，哥伦比亚市，南卡罗莱纳州，美国</p>
+  <p id="contactAddrEn" style="display:none;">📍 Address: University of South Carolina, Columbia, SC, U.S.</p>
+  
+  <p id="contactLinksZh">
+    🔗 学术主页：
+    <a href="https://scholar.google.com/citations?hl=zh-CN&user=obL-zFoAAAAJ" target="_blank">Google Scholar</a> |
+    <a href="https://github.com/Buwei1997" target="_blank">GitHub</a>
+  </p>
+  <p id="contactLinksEn" style="display:none;">
+    🔗 Academic Profiles:
+    <a href="https://scholar.google.com/citations?hl=zh-CN&user=obL-zFoAAAAJ" target="_blank">Google Scholar</a> |
+    <a href="https://github.com/Buwei1997" target="_blank">GitHub</a>
+  </p>
+  
+  <p><a href="assets/cv_zh.pdf" target="_blank" id="resumeLinkZh">简历</a></p>
+  <p><a href="assets/cv_en.pdf" target="_blank" id="resumeLinkEn" style="display:none;">CV</a></p>
+</section>
+
+</main>
+
+<footer>
+  <p id="footerZh">© 2025 何不为 | 本页面由 GitHub Pages 托管 | <a href="https://github.com/Buwei1997/Buwei1997.github.io" target="_blank">源码</a></p>
+  <p id="footerEn" style="display:none;">© 2025 Buwei He | Hosted on GitHub Pages | <a href="https://github.com/Buwei1997/Buwei1997.github.io" target="_blank">Source Code</a></p>
+</footer>
+
+<script>
+  // 语言切换逻辑
+  document.addEventListener('DOMContentLoaded', () => {
+    const langToggle = document.getElementById('langToggle');
+    const isZh = localStorage.getItem('lang') !== 'en';
+    
+    function setLanguage(isChinese) {
+      const suffix = isChinese ? 'Zh' : 'En';
+      const otherSuffix = isChinese ? 'En' : 'Zh';
+      
+      // 切换所有文本块
+      document.querySelectorAll('[id$="Zh"], [id$="En"]').forEach(el => {
+        if (el.id.endsWith(suffix)) {
+          el.style.display = '';
+        } else if (el.id.endsWith(otherSuffix)) {
+          el.style.display = 'none';
+        }
+      });
+      
+      // 切换导航菜单
+      document.querySelectorAll('nav a').forEach(link => {
+        link.textContent = link.getAttribute(`data-${isChinese ? 'zh' : 'en'}`);
+      });
+      
+      // 更新按钮文字
+      langToggle.textContent = isChinese ? '中文 / English' : 'English / 中文';
+      
+      // 保存选择
+      localStorage.setItem('lang', isChinese ? 'zh' : 'en');
+      
+      // 设置 html lang 属性（SEO 友好）
+      document.documentElement.lang = isChinese ? 'zh-CN' : 'en';
+    }
+    
+    // 初始化语言
+    setLanguage(isZh);
+    
+    // 绑定切换事件
+    langToggle.addEventListener('click', () => {
+      const currentLang = localStorage.getItem('lang') || 'zh';
+      setLanguage(currentLang === 'en');
+    });
+  });
+</script>
+
 </body>
 </html>
